@@ -31,32 +31,76 @@ let menuItems = [
 
   Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
 */
-const menuButton = document.createElement('.menu-button');
-const header = document.createElement('.header');
-const menu = document.createElement('div');
-const list = document.createElement('ul');
+function menuMaker(menuItem) {
+  const menu = document.createElement('div')
+  const list = document.createElement('ul')
 
-menu.classList.add('menu');
+  const student = document.createElement('li')
+  const faculty = document.createElement('li')
+  const whatsNew = document.createElement('li')
+  const techTrends = document.createElement('li')
+  const music= document.createElement('li')
+  const logOut = document.createElement('li')
 
-header.appendChild(menu);
-menu.appendChild(list);
+  menu.classList.add('menu')
+  list.classList.add('menu--open')
 
-function menuMaker(menutxt){
-  const menuItem = document.createElement('li');
-  list.appendChild(menuItem);
-  menuItem.textContent = menuTxt;
+  menu.appendChild(list)
+  list.appendChild(student)
+  list.appendChild(faculty)
+  list.appendChild(whatsNew)
+  list.appendChild(techTrends)
+  list.appendChild(music)
+  list.appendChild(logOut)
 
-  return menuItem;
+  student.textContent = menuItems[0]
+  faculty.textContent = menuItems[1]
+  whatsNew.textContent = menuItems[2]
+  techTrends.textContent = menuItems[3]
+  music.textContent = menuItems[4]
+  logOut.textContent = menuItems[5]
+
+  const menuButton = document.querySelector('.menu-button')
+  menuButton.addEventListener('click', event => {
+    menu.classList.toggle('menu--open')
+  })
+  return menu
 }
 
-menuButton.addEventListener('click', event => {
-  menu.classList.toggle('menu-open');
-})
+const newMenu = menuMaker(menuItems)
+document.querySelector('.header').appendChild(newMenu)
+// const menuButton = document.createElement('.menu-button');
+// const header = document.createElement('.header');
+// const menu = document.createElement('div');
+// const list = document.createElement('ul');
 
-const newMenuItems = menuItems.map(item => {
-  return menuMaker(item);
-})
+// menu.classList.add('menu');
 
-newMenuItems.forEach(item => {
-  list.appendChild(item);
-})
+// header.appendChild(menu);
+// menu.appendChild(list);
+
+// function menuMaker(menutxt){
+//   const menuItem = document.createElement('li');
+//   list.appendChild(menuItem);
+//   menuItem.textContent = menuTxt;
+
+//   return menuItem;
+// }
+
+// menuButton.addEventListener('click', event => {
+//   menu.classList.toggle('menu-open');
+// })
+
+// const newMenuItems = menuItems.map(item => {
+//   return menuMaker(item);
+// })
+
+// newMenuItems.forEach(item => {
+//   list.appendChild(item);
+// })
+
+// // menuItem.forEach(menu => {
+// //   const addMenu = menuMaker(menu)
+
+// //   return addMenu;
+// // })
